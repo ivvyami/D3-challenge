@@ -41,8 +41,8 @@ d3.csv("../assets/data/data.csv").then(function(stateData) {
     //step 2: create scale functions
 
     var xLinearScale = d3.scaleLinear()
-      .domain([10, d3.max(stateData, d => d.poverty)])
-      .range([0, width]);
+      .domain([10 -2, d3.max(stateData, d => d.poverty)])
+      .range([5, width]);
 
     var yLinearScale = d3.scaleLinear()
         .domain([0, d3.max(stateData, d => d.healthcare)])
@@ -77,12 +77,12 @@ d3.csv("../assets/data/data.csv").then(function(stateData) {
     circlesGroup.selectAll()
         .data(stateData)
         .enter()
-        .append(text)
+        .append("text")
         .text(d => d.abbr)
         .attr("cx", d => xLinearScale(d.poverty))
         .attr("cy", d => yLinearScale(d.healthcare))
         .attr("font-size", "15px")
-        .attr("fill", "white");
+        .attr("fill", "black");
 
         //step 6: create axes labels
 
